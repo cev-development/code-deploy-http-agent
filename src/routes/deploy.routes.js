@@ -9,9 +9,15 @@ const deployController = DeployController();
 const deployRoutes = Router();
 
 deployRoutes.post(
-    '/deploy',
+    '/deploy/install',
     ensureAuthenticated,
-    deployController.handle
+    deployController.install
+);
+
+deployRoutes.post(
+    '/deploy/start',
+    ensureAuthenticated,
+    deployController.start
 );
 
 module.exports = { deployRoutes }
