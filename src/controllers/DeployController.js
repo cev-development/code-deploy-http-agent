@@ -3,8 +3,7 @@ const commandLineService = CommandLineService();
 
 const DeployController = () => {
     const handle = async (request, response) => {
-        const teste = await commandLineService.execute('ls')
-        console.log(teste);
+        await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/install.sh');
 
         return response.status(200).json({ message: "sucesso" });
     }
