@@ -4,8 +4,8 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const handle = async (request, response) => {
         try {
-            const teste = await commandLineService.execute('cd ~/dev/church/church-managment-bff && pwd');
-            console.log(teste);
+            await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/install.sh');
+            await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/start.sh');
         } catch (error) {
             console.log(error)
         }
