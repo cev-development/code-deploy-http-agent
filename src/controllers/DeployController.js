@@ -5,7 +5,7 @@ const DeployController = () => {
     const install = async (request, response) => {
         try {
             console.log('Installing')
-            await commandLineService.execute('cd ~/dev/church/church-managment-bff/');
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && pwd'));
             console.log(await commandLineService.execute('pwd'));
         } catch (error) {
             console.log(error)
