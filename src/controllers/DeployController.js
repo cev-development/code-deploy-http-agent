@@ -10,7 +10,7 @@ const DeployController = () => {
             console.log('----- Installing Dependencies ')
             console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && yarn"));
             console.log('----- Building ')
-            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && babel src --extensions \".js,.ts\" --out-dir dist --copy-files"));
+            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && npx babel src --extensions \".js,.ts\" --out-dir dist --copy-files"));
             // console.log('----- Building project ')
             // console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && npx babel-cli src --extensions \".js,.ts\" --out-dir dist --copy-files"));
         } catch (error) {
