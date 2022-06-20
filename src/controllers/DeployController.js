@@ -3,27 +3,18 @@ const commandLineService = CommandLineService();
 
 const DeployController = () => {
     const install = async (request, response) => {
-        try {
-            console.log('---------- Installing ----------');
-            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/install.sh'));
-        } catch (error) {
-            console.log(error)
-        }
+        console.log('---------- Installing ----------');
+        console.log(await commandLineService.execute(process.env.SCRIPT_INSTALL));
 
-        return response.status(200).json({ message: "sucesso, installed" });
+        return response.status(200).json({ message: "success" });
     }
 
     const start = async (request, response) => {
-        try {
-            console.log('---------- Starting ----------')
-            await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/start.sh');
-        } catch (error) {
-            console.log(error)
-        }
+        console.log('---------- Starting ----------');
+        await commandLineService.execute(process.env.SCRIPT_START);
 
-        return response.status(200).json({ message: "sucesso, started" });
+        return response.status(200).json({ message: "success" });
     }
-
 
     return { install, start }
 }
