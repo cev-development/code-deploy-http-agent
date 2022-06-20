@@ -4,8 +4,13 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const install = async (request, response) => {
         try {
-            console.log('Installing')
-            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && git pull && npm install && npm run build'));
+            console.log('--- Installing ---')
+            console.log('- Updating Repository ')
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && git pull'));
+            console.log('- Installing Dependencies ')
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && npm install'));
+            console.log('- Building project ')
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && npm run build'));
         } catch (error) {
             console.log(error)
         }
