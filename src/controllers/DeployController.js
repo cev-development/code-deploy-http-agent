@@ -4,8 +4,8 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const install = async (request, response) => {
         try {
-            console.log('---------- Installing ------');
-            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff && git pull && yarn install --production=false && yarn build'));
+            console.log('---------- Installing ----------');
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/install.sh'));
         } catch (error) {
             console.log(error)
         }
@@ -15,7 +15,7 @@ const DeployController = () => {
 
     const start = async (request, response) => {
         try {
-            console.log('Starting')
+            console.log('---------- Starting ----------')
             await commandLineService.execute('cd ~/dev/church/church-managment-bff && ./scripts/start.sh');
         } catch (error) {
             console.log(error)
