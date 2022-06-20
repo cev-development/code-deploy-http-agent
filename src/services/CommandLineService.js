@@ -1,13 +1,13 @@
 const { exec } = require("child_process");
-const shell = require('shelljs');
 
 const CommandLineService = () => {
     const execute = async (command) => {
         return new Promise((resolve, reject) => {
-            shell.exec(command, (code, stdout, stderr) => {
+            exec(command, (error, stdout, stderr) => {
+                if (error) reject(error.message)
                 if (stderr) reject(stderr)
 
-                resolve(code)
+                resolve(stdout)
             });
         })
     }
