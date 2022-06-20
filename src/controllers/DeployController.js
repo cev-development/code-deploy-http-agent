@@ -8,7 +8,7 @@ const DeployController = () => {
             console.log('----- Updating Repository ')
             console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && git pull'));
             console.log('----- Building ')
-            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && ls && ls node_modules/@babel"));
+            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/node_modules/ && ls"));
             // console.log('----- Building project ')
             // console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && npx babel-cli src --extensions \".js,.ts\" --out-dir dist --copy-files"));
         } catch (error) {
