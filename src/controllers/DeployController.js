@@ -5,7 +5,7 @@ const DeployController = () => {
     const install = async (request, response) => {
         try {
             console.log('Installing')
-            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && git pull && npm install && npm run build'));
+            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && git pull && npm install && npm run babel src --extensions \".js,.ts\" --out-dir dist --copy-files"));
         } catch (error) {
             console.log(error)
         }
