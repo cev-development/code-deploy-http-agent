@@ -4,13 +4,8 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const install = async (request, response) => {
         try {
-            console.log('---------- Installing ------')
-            console.log('----- Updating Repository ')
-            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff/ && git pull'));
-            console.log('----- Building ')
-            console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff && yarn install --production=false && yarn build"));
-            // console.log('----- Building project ')
-            // console.log(await commandLineService.execute("cd ~/dev/church/church-managment-bff/ && npx babel-cli src --extensions \".js,.ts\" --out-dir dist --copy-files"));
+            console.log('---------- Installing ------');
+            console.log(await commandLineService.execute('cd ~/dev/church/church-managment-bff && git pull && yarn install --production=false && yarn build'));
         } catch (error) {
             console.log(error)
         }
