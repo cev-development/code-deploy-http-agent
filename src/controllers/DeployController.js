@@ -4,6 +4,7 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const install = async (request, response) => {
         console.log('---------- Installing ----------');
+        console.log(await commandLineService.execute(`chmod -R 777 ${process.env.SCRIPTS_PATH}`));
         console.log(await commandLineService.execute(process.env.SCRIPT_INSTALL));
 
         return response.status(200).json({ message: "success" });
