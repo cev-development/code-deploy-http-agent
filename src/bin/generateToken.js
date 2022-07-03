@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { sign } = require('jsonwebtoken');
 const { secret_token, expires_in_token } = require('../config/auth')
 
