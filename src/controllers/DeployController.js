@@ -1,19 +1,31 @@
 const { CommandLineService } = require('../services/CommandLineService')
+const projects = require('../../projects.json')
+
 const commandLineService = CommandLineService();
 
 const DeployController = () => {
     const install = async (request, response) => {
+        const { project } = request.params;
+        if (!projects[project]) return response.status(404).json({ message: "Project Not Found" });
+
+        const { install, path } = project.scripts;
+
         console.log('---------- Installing ----------');
-        console.log(await commandLineService.execute(`chmod -R 777 ${process.env.SCRIPTS_PATH}`));
-        console.log(await commandLineService.execute(process.env.SCRIPT_INSTALL));
+        console.log(await commandLineService.execute(`chmod -R 777 ${path}`));
+        console.log(await commandLineService.execute(install));
 
         return response.status(200).json({ message: "success" });
     }
 
     const start = async (request, response) => {
+        const { project } = request.params;
+        if (!projects[project]) return response.status(404).json({ message: "Project Not Found" });
+
+        const { start, path } = project.scripts;
+
         console.log('---------- Starting ----------');
-        console.log(await commandLineService.execute(`chmod -R 777 ${process.env.SCRIPTS_PATH}`));
-        await commandLineService.execute(process.env.SCRIPT_START);
+        console.log(await commandLineService.execute(`chmod -R 777 ${path}`));
+        await commandLineService.execute(start);
 
         return response.status(200).json({ message: "success" });
     }

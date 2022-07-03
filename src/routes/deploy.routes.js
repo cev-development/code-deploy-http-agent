@@ -1,7 +1,6 @@
 const { Router } = require('express');
 
 const { ensureAuthenticated } = require('../middlewares/ensureAuthenticated');
-
 const { DeployController } = require('../controllers/DeployController')
 
 const deployController = DeployController();
@@ -9,13 +8,13 @@ const deployController = DeployController();
 const deployRoutes = Router();
 
 deployRoutes.post(
-    '/deploy/install',
+    '/project/:project/deploy/install',
     ensureAuthenticated,
     deployController.install
 );
 
 deployRoutes.post(
-    '/deploy/start',
+    '/project/:project/deploy/start',
     ensureAuthenticated,
     deployController.start
 );
