@@ -19,7 +19,7 @@ const DeployController = () => {
     const start = async (request, response) => {
         const { project } = request.params;
         if (!projects[project]) return response.status(404).json({ message: "Project Not Found" });
-        const { install, path } = projects[project].scripts;
+        const { start, path } = projects[project].scripts;
 
         console.log('---------- Starting ----------');
         console.log(await commandLineService.execute(`chmod -R 777 ${path}`));
