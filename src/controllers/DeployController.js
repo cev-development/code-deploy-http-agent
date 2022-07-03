@@ -6,8 +6,9 @@ const commandLineService = CommandLineService();
 const DeployController = () => {
     const install = async (request, response) => {
         const { project } = request.params;
+        console.log(project)
         if (!projects[project]) return response.status(404).json({ message: "Project Not Found" });
-
+        console.log(projects)
         const { install, path } = project.scripts;
 
         console.log('---------- Installing ----------');
