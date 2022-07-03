@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config()
 
 const { routes } = require('./routes')
 const { handlingErrors } = require('./middlewares/errorHandling');
 
 const app = express();
-const port = 3139;
+const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 app.use(cors());
